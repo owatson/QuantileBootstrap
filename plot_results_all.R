@@ -1,14 +1,16 @@
 # With DL, uncomment next line
 # res = read.csv('models_final_dl/loss_summary.csv')
-# models = c('dl_l','rf','ridge','svr')
-# model_names=c('Deep Learning','Random Forests','Ridge Regression','Support Vector Machines')
 # pdf('figures_dl/Overall_Results.pdf')
 
 # No DL:
 res = read.csv('models_final/loss_summary.csv')
-models = c('rf','ridge','svr')
+pdf('figures/Overall_Results.pdf',width=(18.9/2.4))
+
+
+DO_DL = FALSE
+
+models = c('dl_l','rf','ridge','svr')
 model_names=c('Deep Learning','Random Forests','Ridge Regression','Support Vector Machines')
-pdf('figures/Overall_Results.pdf')
 
 
 library(RColorBrewer)
@@ -30,19 +32,20 @@ for(g in gammas){
        xlab='% of ranked training activity data',ylab='Total model score',xaxt='n')
   axis(1,at=c(0.4,.6,.8,1), labels = 100*c(0.4,.6,.8,1))
   for (m in models){
-    c = 1
-    for(l in losses){
-      if(l != 'mse'){
-        for(f in frac_fits){
-          ind = intersect(intersect(grep(l, res$losses), grep(g, res$losses)), grep(f, res$losses))
-          ys[f] = res[ind,m]
+    if(DO_DL | (!DO_DL & m != 'dl_l')){
+      c = 1
+      for(l in losses){
+        if(l != 'mse'){
+          for(f in frac_fits){
+            ind = intersect(intersect(grep(l, res$losses), grep(g, res$losses)), grep(f, res$losses))
+            ys[f] = res[ind,m]
+          }
+          lines(frac_fits, ys, lty=line_types[c], col=cols[m],lwd=2)
+          c = c+1
         }
-        lines(frac_fits, ys, lty=line_types[c], col=cols[m],lwd=3)
-        c = c+1
+        
       }
-      
     }
-    #}
   }
 }
 
@@ -51,12 +54,13 @@ plot(NA,NA,xlim=c(0.4,1), ylim=c(0,25), main='Mean Squared Error',
      xlab='% of ranked activity data used',ylab='Total model score',xaxt='n')
 axis(1,at=c(0.4,.6,.8,1), labels = 100*c(0.4,.6,.8,1))
 for (m in models){
-  for(f in frac_fits){
-    ind = intersect(grep(l, res$losses), grep(f, res$losses))
-    ys[f] = res[ind,m]
+  if(DO_DL | (!DO_DL & m != 'dl_l')){
+    for(f in frac_fits){
+      ind = intersect(grep(l, res$losses), grep(f, res$losses))
+      ys[f] = res[ind,m]
+    }
+    lines((frac_fits), ys, lty=1, col=cols[m],lwd=2)
   }
-  lines((frac_fits), ys, lty=1, col=cols[m],lwd=3)
-  
 }
 dev.off()
 #legend('topright',col=cols,legend = model_names,lwd=3,
