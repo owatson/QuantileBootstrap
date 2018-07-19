@@ -1,0 +1,26 @@
+Target preferred name,Target abbreviation,Uniprot ID,ChEMBL ID,Number of bioactivity data points
+Alpha-2a adrenergic receptor,A2a,P08913,CHEMBL1867,203
+Tyrosine-protein kinase ABL,ABL1,P00519,CHEMBL1862,773
+Acetylcholinesterase,Acetylcholinesterase,P22303,CHEMBL220,"3,159"
+Androgen Receptor,Androgen,P10275,CHEMBL1871,"1,290"
+Serine/threonine-protein kinase Aurora-A,Aurora-A,O14965,CHEMBL4722,"2,125"
+Serine/threonine-protein kinase B-raf,B-raf,P15056,CHEMBL5145,"1,730"
+Cannabinoid CB1 receptor,Cannabinoid,P21554,CHEMBL218,"1,116"
+Carbonic anhydrase II,Carbonic,P00918,CHEMBL205,603
+Caspase-3,Caspase,P42574,CHEMBL2334,"1,606"
+Thrombin,Coagulation,P00734,CHEMBL204,"1,700"
+Cyclooxygenase-1,COX-1,P23219,CHEMBL221,"1,343"
+Cyclooxygenase-2,COX-2,P35354,CHEMBL230,"2,855"
+Dihydrofolate reductase,Dihydrofolate,P00374,CHEMBL202,584
+Dopamine D2 receptor,Dopamine,P14416,CHEMBL217,479
+Norepinephrine transporter,Ephrin,P23975,CHEMBL222,"1,740"
+Epidermal growth factor receptor erbB1,erbB1,P00533,CHEMBL203,"4,868"
+Estrogen receptor alpha,Estrogen,P03372,CHEMBL206,"1,705"
+Glucocorticoid receptor,Glucocorticoid,P04150,CHEMBL2034,"1,447"
+Glycogen synthase kinase-3 beta,Glycogen,P49841,CHEMBL262,"1,757"
+HERG,HERG,Q12809,CHEMBL240,"5,207"
+Tyrosine-protein kinase JAK2,JAK2,O60674,CHEMBL2971,"2,655"
+Tyrosine-protein kinase LCK,LCK,P06239,CHEMBL258,"1,352"
+Monoamine oxidase A,Monoamine,P21397,CHEMBL1951,"1,379"
+Mu opioid receptor,Opioid,P35372,CHEMBL233,840
+Vanilloid receptor,Vanilloid,Q8NER1,CHEMBL4794,"1,923"
