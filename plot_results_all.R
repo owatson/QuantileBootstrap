@@ -1,13 +1,13 @@
 # With DL, uncomment next line
-# res = read.csv('models_final_dl/loss_summary.csv')
-# pdf('figures_dl/Overall_Results.pdf')
+res = read.csv('models_final_dl/loss_summary.csv')
+pdf('figures_dl/Overall_Results.pdf')
 
 # No DL:
-res = read.csv('models_final/loss_summary.csv')
-pdf('figures/Overall_Results.pdf',width=(18.9/2.4))
+# res = read.csv('models_final/loss_summary.csv')
+# pdf('figures/Overall_Results.pdf',width=(18.9/2.4))
 
 
-DO_DL = FALSE
+DO_DL = TRUE
 
 models = c('dl_l','rf','ridge','svr')
 model_names=c('Deep Learning','Random Forests','Ridge Regression','Support Vector Machines')
