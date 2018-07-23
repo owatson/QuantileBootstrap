@@ -23,7 +23,7 @@ gammas = as.character(c(90,95,99))
 names(cols) = models
 ys = array(dim = length(frac_fits))
 names(ys) = frac_fits
-up_ys = c(25,25,25); names(up_ys)=gammas
+up_ys = c(18,16,14,25); names(up_ys)=gammas
 line_types = c(2,4)
 
 par(mfrow=c(2,2),bty='n',las=1)
