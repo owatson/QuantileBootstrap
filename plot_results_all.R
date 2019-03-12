@@ -1,6 +1,6 @@
 # With DL, uncomment next line
 res = read.csv('models_final_dl/loss_summary.csv')
-pdf('figures_dl/Overall_Results.pdf')
+pdf('figures_dl/OSupplementary_Shuffle_Results.pdf')
 
 # No DL:
 # res = read.csv('models_final/loss_summary.csv')
@@ -24,12 +24,13 @@ names(cols) = models
 ys = array(dim = length(frac_fits))
 names(ys) = frac_fits
 up_ys = c(18,16,14,25); names(up_ys)=gammas
-line_types = c(2,4)
+line_types = c(1,2)
 
 par(mfrow=c(2,2),bty='n',las=1)
 for(g in gammas){
-  plot(NA,NA,xlim=c(0.4,1), ylim=c(0,up_ys[g]), main=paste('Active-rank on top ',g, '%'),
-       xlab='% of ranked training activity data',ylab='Total model score',xaxt='n')
+  plot(NA,NA,xlim=c(0.4,1), ylim=c(0,25),#up_ys[g]), 
+       main=paste('Active-rank on top ',g, '%', sep=''),
+       xlab='Training sample size relative to full data (%)',ylab='Total model score',xaxt='n')
   axis(1,at=c(0.4,.6,.8,1), labels = 100*c(0.4,.6,.8,1))
   for (m in models){
     if(DO_DL | (!DO_DL & m != 'dl_l')){
@@ -51,7 +52,7 @@ for(g in gammas){
 
 l='mse'
 plot(NA,NA,xlim=c(0.4,1), ylim=c(0,25), main='Mean Squared Error',
-     xlab='% of ranked activity data used',ylab='Total model score',xaxt='n')
+     xlab='Training sample size relative to full data (%)',ylab='Total model score',xaxt='n')
 axis(1,at=c(0.4,.6,.8,1), labels = 100*c(0.4,.6,.8,1))
 for (m in models){
   if(DO_DL | (!DO_DL & m != 'dl_l')){
@@ -59,9 +60,11 @@ for (m in models){
       ind = intersect(grep(l, res$losses), grep(f, res$losses))
       ys[f] = res[ind,m]
     }
-    lines((frac_fits), ys, lty=1, col=cols[m],lwd=2)
+    lines((frac_fits), ys, lty=4, col=cols[m],lwd=2)
   }
 }
+legend('left',col=cols,legend = model_names,lwd=2,lty=4,
+      cex=0.8,bty='n')
+
 dev.off()
-#legend('topright',col=cols,legend = model_names,lwd=3,
-#       cex=1,bty='n')
+
