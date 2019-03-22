@@ -1,6 +1,6 @@
 # With DL, uncomment next line
 res = read.csv('models_final_dl/loss_summary.csv')
-pdf('figures_dl/OSupplementary_Shuffle_Results.pdf')
+pdf('figures_dl/Supplementary_Shuffled_Results.pdf')
 
 # No DL:
 # res = read.csv('models_final/loss_summary.csv')
